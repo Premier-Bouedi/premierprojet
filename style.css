@@ -1,0 +1,93 @@
+/* Custom Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Home section animations */
+.animate-fadeIn {
+    animation: fadeIn 1.5s ease-out;
+}
+
+.animate-slideIn {
+    animation: slideIn 1.5s ease-out 0.5s both;
+}
+
+/* Background image overlay */
+.home-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Apply animations to sections */
+section {
+    animation: fadeIn 1s ease-out;
+}
+
+.skill-card {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom styles for better spacing and transitions */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hover effects for project cards */
+.project-card {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Skill icons hover effect */
+.skill-icon {
+    transition: transform 0.3s ease;
+}
+.text-center text-white {
+    
+}
+.skill-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Form input focus effects */
+input:focus, textarea:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
