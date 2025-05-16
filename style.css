@@ -48,7 +48,7 @@ html {
     margin: 0 auto;
 }
 
-/* Hover effects for project cards */
+/* Project card hover effect */
 .project-card {
     transition: transform 0.3s ease;
 }
@@ -61,16 +61,14 @@ html {
 .skill-icon {
     transition: transform 0.3s ease;
 }
-.text-center text-white {
-    
-}
+
 .skill-icon:hover {
     transform: scale(1.1);
 }
 
 /* Form input focus effects */
 input:focus, textarea:focus {
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.5);
 }
 
 /* Custom scrollbar */

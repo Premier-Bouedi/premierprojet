@@ -40,3 +40,41 @@ contactForm.addEventListener('submit', (e) => {
     alert('Thank you for your message! I will get back to you soon.');
     contactForm.reset();
 });
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+// Observe all sections
+document.querySelectorAll('section').forEach((section) => {
+    observer.observe(section);
+});
+
+// Add animation classes to elements
+document.querySelectorAll('.skill-card, .project-card').forEach(element => {
+    element.style.opacity = '0';
+    observer.observe(element);
+});
+
+// Profile photo animation
+const profilePhoto = document.querySelector('.profile-photo');
+if (profilePhoto) {
+    observer.observe(profilePhoto);
+}
+
+// Add hover animations to buttons
+document.querySelectorAll('a, button').forEach(button => {
+    button.classList.add('btn');
+});
+
+// Add form animations
+document.querySelectorAll('form').forEach(form => {
+    form.classList.add('contact-form');
+});
