@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAGNAGA MAKILIGHI CLainn Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAGNAGA MAKILIGHI Clainn - Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="script.js" defer></script>
     <link rel="shortcut icon" href="img/icone.png" type="image/x-icon">
-    
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50 text-gray-800">
+
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-lg z-50">
-        <div class="container mx-auto px-4">
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-6">
             <div class="flex justify-between items-center h-16">
-                <a href="#" class="text-2xl font-bold text-gray-800">Portfolio</a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-600 hover:text-gray-900">Home</a>
-                    <a href="#about" class="text-gray-600 hover:text-gray-900">About</a>
-                    <a href="#projects" class="text-gray-600 hover:text-gray-900">Projects</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-gray-900">Témoignages</a>
-                    <a href="#skills" class="text-gray-600 hover:text-gray-900">Skills</a>
-                    <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
+                <a href="#" class="text-xl font-bold text-gray-900 tracking-tight">Portfolio<span class="text-amber-500">.</span></a>
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#home" class="text-gray-600 hover:text-amber-600 transition">Accueil</a>
+                    <a href="#about" class="text-gray-600 hover:text-amber-600 transition">À propos</a>
+                    <a href="#atouts" class="text-gray-600 hover:text-amber-600 transition">Atouts</a>
+                    <a href="#parcours" class="text-gray-600 hover:text-amber-600 transition">Parcours</a>
+                    <a href="#experience" class="text-gray-600 hover:text-amber-600 transition">Expériences</a>
+                    <a href="#projects" class="text-gray-600 hover:text-amber-600 transition">Projets</a>
+                    <a href="#contact" class="text-gray-600 hover:text-amber-600 transition">Contact</a>
                 </div>
-                <button class="md:hidden" id="menu-button">
+                <button class="md:hidden text-gray-700" id="menu-button" aria-label="Menu">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -33,61 +37,81 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="hidden md:hidden fixed w-full bg-white z-40" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-            <a href="#home" class="block px-3 py-2 text-gray-600 hover:text-gray-900">Home</a>
-            <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-gray-900">About</a>
-            <a href="#projects" class="block px-3 py-2 text-gray-600 hover:text-gray-900">Projects</a>
-            <a href="#testimonials" class="block px-3 py-2 text-gray-600 hover:text-gray-900">Témoignages</a>
-            <a href="#skills" class="block px-3 py-2 text-gray-600 hover:text-gray-900">Skills</a>
-            <a href="#contact" class="block px-3 py-2 text-gray-600 hover:text-gray-900">Contact</a>
+    <!-- Menu Mobile -->
+    <div class="hidden md:hidden fixed w-full bg-white z-40 top-16 shadow-lg transition-all" id="mobile-menu">
+        <div class="px-4 pt-2 pb-4 space-y-2 font-medium">
+            <a href="#home" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded">Accueil</a>
+            <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded">À propos</a>
+            <a href="#atouts" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded">Atouts</a>
+            <a href="#parcours" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded">Parcours</a>
+            <a href="#experience" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded">Expériences</a>
+            <a href="#projects" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded">Projets</a>
+            <a href="#contact" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded">Contact</a>
         </div>
     </div>
 
-    <!-- Home Section -->
+    <!-- Section Accueil -->
     <section id="home" class="h-screen relative flex items-center justify-center">
-        <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
             <img src="img/bank.jpeg" alt="Background" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="absolute inset-0 bg-black/60"></div>
         </div>
-        <!-- Content -->
-        <div class="relative z-10 text-center text-white">
-            <h1 class="text-5xl font-bold mb-4 animate-fadeIn">MAGNAGA MAKILIGHI CLainn</h1>
-            <p class="text-xl mb-8 animate-slideIn">Web Developer, Designer & IT Maintenance Specialist</p>
-            <a href="#contact" class="bg-white text-blue-500 px-8 py-3 rounded-full hover:bg-gray-100 transition">Contact Me</a>
+        <div class="relative z-10 text-center text-white px-4 max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn tracking-wide">MAGNAGA MAKILIGHI Clainn</h1>
+            <p class="text-lg md:text-2xl mb-8 font-light text-gray-200 animate-slideIn">Développeur Full-Stack, Mobile & Spécialiste IT</p>
+            <div class="flex justify-center gap-4">
+                <a href="#projects" class="bg-amber-500 text-white font-medium px-8 py-3 rounded-xl hover:bg-amber-600 transition shadow-lg">Découvrir mes projets</a>
+                <a href="#contact" class="bg-white/10 backdrop-blur-md border border-white/30 text-white font-medium px-8 py-3 rounded-xl hover:bg-white/20 transition">Me contacter</a>
+            </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-blue">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">About Me</h2>
+    <!-- Section À propos & CV -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">À propos de moi</h2>
             <div class="flex flex-col md:flex-row items-center justify-center gap-12">
-                <!-- Profile Photo -->
-                <div class="w-64 h-64 relative">
-                    <div class="w-full h-full rounded-full overflow-hidden border-4 border-red-500 shadow-xl transform hover:scale-105 transition-transform duration-300">
-                        <img src="img/profil.jpeg" alt="Profile Photo" class="w-full h-full object-cover object-right">
+                <div class="w-56 h-56 relative flex-shrink-0">
+                    <div class="w-full h-full rounded-2xl overflow-hidden border-2 border-amber-500 shadow-xl">
+                        <img src="img/profil.jpeg" alt="MAGNAGA MAKILIGHI Clainn" class="w-full h-full object-cover">
                     </div>
-                    <!-- Decorative circle -->
-                    <div class="absolute -top-4 -left-4 w-72 h-72 border-2 border-red-300 rounded-full animate-pulse"></div>
                 </div>
-                <!-- About Text -->
-                <div class="max-w-xl text-gray-600">
-                    <p class="mb-6 text-lg">Je suis un développeur web passionné avec une expertise en création de sites web modernes et responsifs. En plus du développement web, je suis spécialisé dans la maintenance informatique, offrant des solutions complètes pour vos besoins techniques.</p>
-                    <p class="text-lg">Mon objectif est de créer des applications fonctionnelles avec une excellente expérience utilisateur, tout en assurant leur maintenance et leur optimisation continue.</p>
-                    <!-- Social Links -->
+                <div class="max-w-xl">
+                    <p class="mb-4 text-gray-600 leading-relaxed">
+                        Développeur Full-Stack et Mobile passionné, j'associe compétences techniques solides en génie logiciel (Laravel, React, Flutter, Python) et expertise pratique en infrastructure & maintenance IT.
+                    </p>
+                    <p class="mb-6 text-gray-600 leading-relaxed">
+                        Mon objectif est d'architecturer des applications performantes, sécurisées et intuitives tout en assurant l'optimisation et le suivi technique des systèmes.
+                    </p>
+                    
+                    <!-- Carte CV -->
+                    <div id="cv-card" class="bg-white border border-gray-200 rounded-2xl p-4 flex items-center justify-between shadow-sm hover:shadow-md transition cursor-pointer group">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-red-50 text-red-500 p-3 rounded-xl group-hover:bg-red-100 transition">
+                                <i class="fa-solid fa-file-pdf text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 text-sm">CV MAGNAGA MAKELIGHI Clainn</h4>
+                                <p class="text-xs text-gray-400">Cliquez pour afficher • Portfolio & Parcours</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="cv-toggle-btn" type="button" class="text-amber-600 hover:text-amber-700 text-sm font-medium px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 transition">
+                                <i class="fa-solid fa-eye mr-1"></i> Voir
+                            </button>
+                            <a href="cv.pdf" download="CV-MAGNAGA-MAKELIGHI-Clainn.pdf" class="text-gray-400 hover:text-amber-600 p-2" title="Télécharger" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-download"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Liens sociaux -->
                     <div class="mt-6 flex gap-4">
-                        <a href="https://www.linkedin.com/in/clainn/" class="text-red-500 hover:text-red-700 transition">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
+                        <a href="https://www.linkedin.com/in/clainn/" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-amber-500 hover:text-white transition">
+                            <i class="fa-brands fa-linkedin-in"></i>
                         </a>
-                        <a href="mailto:magnagamakelighiclainn@gmail.com" class="text-red-500 hover:text-red-700 transition">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
+                        <a href="mailto:magnagamakelighiclainn@gmail.com" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-amber-500 hover:text-white transition">
+                            <i class="fa-regular fa-envelope"></i>
                         </a>
                     </div>
                 </div>
@@ -95,210 +119,390 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project Card 1 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/image ASPA.jpeg" alt="Project 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Project 1</h3>
-                        <p class="text-gray-600">site vitrine</p>
+<!-- Section Parcours Éducatif -->
+<section id="parcours" class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Expériences éducatives</h2>
+
+            <div class="space-y-6 divide-y divide-gray-100">
+                <div class="pt-6 first:pt-0 flex items-start">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">OMNIA SCHOOL OF BUSINESS AND TECHNOLOGY</h3>
+                            <p class="text-sm text-gray-500">Licence • Sciences informatiques</p>
+                            <p class="text-xs text-gray-400 mt-1">Casablanca, Maroc</p>
+                        </div>
                     </div>
                 </div>
-                <!-- Project Card 2 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/portfolio hhholly.PNG" alt="Project 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Project 2</h3>
-                        <p class="text-gray-600">Portfolio Etudiant</p>
+
+                <div class="pt-6 flex items-start">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">OMNIA SCHOOL OF BUSINESS AND TECHNOLOGY</h3>
+                            <p class="text-sm text-gray-500">Professionnel • Sciences informatiques</p>
+                            <p class="text-xs text-gray-400 mt-1">Diplômé janvier 2026 • Casablanca</p>
+                        </div>
                     </div>
                 </div>
-                <!-- Project Card 3 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="img/port.PNG" alt="Project 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Project 3</h3>
-                        <p class="text-gray-600">My Portfolio</p>
+
+                <div class="pt-6 flex items-start">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">HOUSSNI JOB</h3>
+                            <p class="text-sm text-gray-500">Professionnel • Sciences informatiques</p>
+                            <p class="text-xs text-gray-400 mt-1">Diplômé janvier 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex items-start">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <i class="fa-solid fa-school"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">Lycée technique de BIKELE</h3>
+                            <p class="text-sm text-gray-500">Enseignement secondaire • Éducation</p>
+                            <p class="text-xs text-gray-400 mt-1">Diplômé janvier 2023</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">My Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">HTML</span>
-                    </div>
-                    <p class="font-semibold">HTML5</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">CSS</span>
-                    </div>
-                    <p class="font-semibold">CSS3</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">JS</span>
-                    </div>
-                    <p class="font-semibold">JavaScript</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">TW</span>
-                    </div>
-                    <p class="font-semibold">Tailwind</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">WP</span>
-                    </div>
-                    <p class="font-semibold">WordPress</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">CV</span>
-                    </div>
-                    <p class="font-semibold">Canva</p>
-                </div>
+    <!-- Section Atouts (basée sur ton image atouts.PNG) -->
+    <section id="atouts" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Mes Atouts Technique</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">DB</span>
+                <!-- Carte 1 : Backend & API -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                        <i class="fa-solid fa-server text-xl"></i>
                     </div>
-                    <p class="font-semibold">Base de données</p>
+                    <h3 class="font-bold text-gray-800 text-lg mb-4">Backend & API</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Laravel (PHP)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>PHP / REST API</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>MySQL / Base de données</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Git / GitHub</li>
+                    </ul>
                 </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">Git</span>
+
+                <!-- Carte 2 : Frontend & Mobile -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                        <i class="fa-solid fa-mobile-screen text-xl"></i>
                     </div>
-                    <p class="font-semibold">Git/GitHub</p>
+                    <h3 class="font-bold text-gray-800 text-lg mb-4">Frontend & Mobile</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Flutter (Dart)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>React JS</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>HTML5 / CSS3</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Tailwind CSS</li>
+                    </ul>
                 </div>
-                <div class="text-center">
-                    <div class="w-20 h-20 mx-auto bg-blue-500 rounded-full flex items-center justify-center mb-4">
-                        <span class="text-white text-2xl">IT</span>
+
+                <!-- Carte 3 : Automatisation -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                        <i class="fa-solid fa-code text-xl"></i>
                     </div>
-                    <p class="font-semibold">Maintenance IT</p>
+                    <h3 class="font-bold text-gray-800 text-lg mb-4">Automatisation</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Python</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Scripting & Bots</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Telegram Bot API</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Google Sheets API</li>
+                    </ul>
+                </div>
+
+                <!-- Carte 4 : Infrastructure -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                        <i class="fa-solid fa-network-wired text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-4">Infrastructure</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Maintenance curative hardware</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Config. systèmes OS</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Diagnostic & Dépannage</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Support technique</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Expérience Pro / Stages (basée sur ton image stage.PNG) -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8">Expérience professionnelle</h2>
+
+                <div class="space-y-8 divide-y divide-gray-100">
+                    <!-- Stage 1 -->
+                    <div class="pt-6 first:pt-0">
+                        <div class="mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-800 uppercase text-sm tracking-wider">Stagiaire en informatique</h3>
+                                <p class="text-xs font-semibold text-gray-500">LE BÜCHER • Stage</p>
+                                <p class="text-xs text-gray-400 mt-0.5">mai 2024 - Aujourd'hui • Casablanca</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Conception et développement d'un site web vitrine pour l'entreprise de menuiserie Le Bûcher. Intégration de la structure des pages et mise en valeur des services et réalisations (JavaScript, HTML/CSS).
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Développement web</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">JavaScript OS</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Emails HTML</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Grille CSS</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="pt-6">
+                        <div class="mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-800 uppercase text-sm tracking-wider">Stagiaire en informatique</h3>
+                                <p class="text-xs font-semibold text-gray-500">ENDEX HOLDING • Stage</p>
+                                <p class="text-xs text-gray-400 mt-0.5">mai 2024 - Aujourd'hui • Casablanca</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Intervention sur une boutique e-commerce Shopify existante pour refondre et optimiser l'interface utilisateur. Application du responsive design pour garantir un affichage fluide sur tous les supports.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">E-commerce</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Shopify</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Conception Web réactive</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Ergonomie</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="pt-6">
+                        <div class="mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-800 uppercase text-sm tracking-wider">Stagiaire en informatique</h3>
+                                <p class="text-xs font-semibold text-gray-500">DIGICRAFT • Stage</p>
+                                <p class="text-xs text-gray-400 mt-0.5">mars 2023 - Aujourd'hui • Casablanca</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Apprentissage et mise en pratique des bases du langage JavaScript pour dynamiser les interfaces web. Assimilation des bonnes pratiques d'architecture et de suivi de projets web.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">JavaScript OS</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Développement web</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="pt-6">
+                        <div class="mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-800 uppercase text-sm tracking-wider">Stagiaire en informatique</h3>
+                                <p class="text-xs font-semibold text-gray-500">Assemblée Nationale • Stage</p>
+                                <p class="text-xs text-gray-400 mt-0.5">août 2022 - Aujourd'hui • Libreville</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+                            Réalisation de la maintenance curative et préventive sur le parc informatique (postes de travail, périphériques). Diagnostic des pannes matérielles et logicielles.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Modes de maintenance</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Dépannage</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Support technique</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Infrastructure réseau</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Technical Maintenance Details -->
-            <div class="mt-16 bg-gray-50 p-8 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold mb-6 text-center">Compétences en Maintenance Informatique</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-4">
+            <!-- Détails Maintenance Informatique (basé sur ton image datail.PNG) -->
+            <div class="mt-8 bg-white border border-amber-200/60 rounded-3xl p-8 shadow-sm">
+                <h3 class="text-lg font-bold text-amber-600 text-center mb-6">Détails — Maintenance Informatique</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                    <div class="space-y-3">
                         <div class="flex items-center space-x-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
+                            <i class="fa-solid fa-check text-amber-500"></i>
                             <span>Diagnostic et résolution de problèmes matériels</span>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
+                            <i class="fa-solid fa-check text-amber-500"></i>
                             <span>Installation et configuration de systèmes d'exploitation</span>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
+                            <i class="fa-solid fa-check text-amber-500"></i>
                             <span>Maintenance préventive des équipements</span>
                         </div>
                     </div>
-                    <div class="space-y-4">
+                    <div class="space-y-3">
                         <div class="flex items-center space-x-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
+                            <i class="fa-solid fa-check text-amber-500"></i>
                             <span>Gestion des sauvegardes et de la sécurité</span>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
+                            <i class="fa-solid fa-check text-amber-500"></i>
                             <span>Support technique aux utilisateurs</span>
                         </div>
                         <div class="flex items-center space-x-3">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
+                            <i class="fa-solid fa-check text-amber-500"></i>
                             <span>Mise à jour et maintenance des logiciels</span>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-12">Contact Me</h2>
-            <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8">
-                <!-- Contact Information --> 
-                <div class="flex-1 bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-semibold mb-6">Get in Touch</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                            <a href="cc
-                            " class="text-gray-600 hover:text-red-blue">magnagamakelighiclainn@gmail.com</a>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                            <a href="https://www.linkedin.com/in/clainn/" class="text--600 hover:text-red-500">LinkedIn Profile</a>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            </svg>
-                            <span class="text-gray-600">Available for Remote Work</span>
-                        </div>
-                        
+    <!-- Section Projets Réalisés -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Mes Projets Récents</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Projet 1 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="img/image ASPA.jpeg" alt="Mousse & Co / E-commerce" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Laravel & Livewire</span>
+                        <h3 class="text-lg font-bold mt-3 mb-2 text-gray-800">Mousse & Co / E-commerce</h3>
+                        <p class="text-sm text-gray-600 mb-4">Plateforme d'e-commerce avec gestion des abonnements et workflows automatisés.</p>
                     </div>
                 </div>
-                <!-- Contact Form -->
-                <div class="flex-1">
-                    <form class="space-y-6">
-                        <div>
-                            <label class="block text-gray-700 mb-2" for="name">Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-red-500">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2" for="email">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-red-500">
-                        </div>
-                        <div>
-                            <label class="block text-gray-700 mb-2" for="message">Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-red-500"></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition">Send Message</button>
-                    </form>
+
+                <!-- Projet 2 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="img/portfolio hhholly.PNG" alt="OMNIA-Connect" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Full-Stack & Mobile</span>
+                        <h3 class="text-lg font-bold mt-3 mb-2 text-gray-800">OMNIA-Connect</h3>
+                        <p class="text-sm text-gray-600 mb-4">Plateforme collaborative étudiante intégrant gestion des accès et réseau d'échange.</p>
+                    </div>
                 </div>
+
+                <!-- Projet 3 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="img/port.PNG" alt="Vision-ShopFlow" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Python & Streamlit</span>
+                        <h3 class="text-lg font-bold mt-3 mb-2 text-gray-800">Vision-ShopFlow</h3>
+                        <p class="text-sm text-gray-600 mb-4">Outil d'analyse prédictive des ventes et d'automatisation des stocks de magasin.</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    <!-- Section Contact -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Me Contacter</h2>
+            <div class="flex flex-col md:flex-row gap-8">
+                
+                <div class="flex-1 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                    <h3 class="text-xl font-bold mb-6 text-gray-800">Coordonnées</h3>
+                    <div class="space-y-6 text-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <a href="mailto:magnagamakelighiclainn@gmail.com" class="text-gray-600 hover:text-amber-600">magnagamakelighiclainn@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <a href="https://www.linkedin.com/in/clainn/" target="_blank" class="text-gray-600 hover:text-amber-600">Profil LinkedIn</a>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <span class="text-gray-600">Casablanca, Maroc (Disponible à distance)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1" for="name">Nom complet</label>
+                            <input type="text" id="name" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1" for="email">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1" for="message">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-500 text-white font-medium py-3 rounded-xl hover:bg-amber-600 transition shadow-md text-sm">Envoyer le message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2026 MAGNAGA MAKILIGHI Clainn. Tous droits réservés.</p>
         </div>
     </footer>
+
+    <!-- Modale CV plein écran -->
+    <div id="cv-modal" class="cv-modal hidden" aria-hidden="true">
+        <div id="cv-modal-backdrop" class="cv-modal-backdrop"></div>
+        <div class="cv-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+            <div class="cv-modal-header">
+                <span id="cv-modal-title" class="text-sm font-medium text-gray-700">
+                    <i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>CV MAGNAGA MAKELIGHI Clainn
+                </span>
+                <div class="flex items-center gap-2">
+                    <a href="cv.pdf" download="CV-MAGNAGA-MAKELIGHI-Clainn.pdf" class="cv-modal-action" title="Télécharger">
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                    <a href="cv.pdf" target="_blank" rel="noopener" class="cv-modal-action" title="Ouvrir dans un nouvel onglet">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </a>
+                    <button id="cv-close-btn" type="button" class="cv-modal-action" aria-label="Fermer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="cv-pdf-container" class="cv-pdf-container">
+                <p id="cv-loading" class="cv-loading">Chargement du CV...</p>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

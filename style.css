@@ -89,3 +89,110 @@ input:focus, textarea:focus {
     background: #555;
 }
 
+/* CV modal plein écran */
+body.cv-modal-active {
+    overflow: hidden;
+}
+
+.cv-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.cv-modal.hidden {
+    display: none;
+}
+
+.cv-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+}
+
+.cv-modal-panel {
+    position: relative;
+    z-index: 1;
+    width: min(96vw, 1200px);
+    height: min(92vh, 900px);
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    animation: cvModalIn 0.3s ease-out;
+}
+
+.cv-modal-open .cv-modal-panel {
+    animation: cvModalIn 0.3s ease-out;
+}
+
+@keyframes cvModalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.cv-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.25rem;
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    flex-shrink: 0;
+}
+
+.cv-modal-action {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    color: #6b7280;
+    transition: background 0.2s, color 0.2s;
+}
+
+.cv-modal-action:hover {
+    background: #f3f4f6;
+    color: #d97706;
+}
+
+.cv-pdf-container {
+    flex: 1;
+    overflow-y: auto;
+    background: #f3f4f6;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cv-pdf-page {
+    max-width: 100%;
+    height: auto;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 0.25rem;
+}
+
+.cv-loading {
+    color: #6b7280;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.875rem;
+}
+

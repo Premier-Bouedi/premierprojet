@@ -78,3 +78,120 @@ document.querySelectorAll('a, button').forEach(button => {
 document.querySelectorAll('form').forEach(form => {
     form.classList.add('contact-form');
 });
+
+// CV modal (grande fenêtre + PDF.js)
+const cvCard = document.getElementById('cv-card');
+const cvModal = document.getElementById('cv-modal');
+const cvModalBackdrop = document.getElementById('cv-modal-backdrop');
+const cvToggleBtn = document.getElementById('cv-toggle-btn');
+const cvCloseBtn = document.getElementById('cv-close-btn');
+const cvPdfContainer = document.getElementById('cv-pdf-container');
+const cvLoading = document.getElementById('cv-loading');
+const CV_PDF_URL = 'cv.pdf';
+let cvPdfLoaded = false;
+
+if (typeof pdfjsLib !== 'undefined') {
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+}
+
+async function renderCvPdf() {
+    if (!cvPdfContainer || typeof pdfjsLib === 'undefined') return;
+
+    if (cvPdfLoaded) return;
+
+    try {
+        if (cvLoading) cvLoading.textContent = 'Chargement du CV...';
+
+        const pdf = await pdfjsLib.getDocument(CV_PDF_URL).promise;
+
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+            const page = await pdf.getPage(pageNum);
+            const canvas = document.createElement('canvas');
+            canvas.className = 'cv-pdf-page';
+            const context = canvas.getContext('2d');
+            const viewport = page.getViewport({ scale: 1.4 });
+
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            await page.render({ canvasContext: context, viewport }).promise;
+            cvPdfContainer.appendChild(canvas);
+        }
+
+        if (cvLoading) cvLoading.remove();
+        cvPdfLoaded = true;
+    } catch (error) {
+        console.error('Erreur chargement CV:', error);
+        if (cvLoading) {
+            cvLoading.innerHTML =
+                'Impossible d\'afficher le CV ici. <a href="cv.pdf" target="_blank" class="text-amber-600 underline">Ouvrir le PDF</a>';
+        }
+    }
+}
+
+function openCvModal() {
+    if (!cvModal) return;
+
+    cvModal.classList.remove('hidden');
+    cvModal.classList.add('cv-modal-open');
+    cvModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('cv-modal-active');
+
+    renderCvPdf();
+
+    if (cvToggleBtn) {
+        cvToggleBtn.innerHTML = '<i class="fa-solid fa-eye-slash mr-1"></i> Masquer';
+    }
+}
+
+function closeCvModal() {
+    if (!cvModal) return;
+
+    cvModal.classList.add('hidden');
+    cvModal.classList.remove('cv-modal-open');
+    cvModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('cv-modal-active');
+
+    if (cvToggleBtn) {
+        cvToggleBtn.innerHTML = '<i class="fa-solid fa-eye mr-1"></i> Voir';
+    }
+}
+
+function toggleCvModal() {
+    if (!cvModal) return;
+
+    if (cvModal.classList.contains('hidden')) {
+        openCvModal();
+    } else {
+        closeCvModal();
+    }
+}
+
+if (cvCard && cvModal) {
+    cvCard.addEventListener('click', (e) => {
+        if (e.target.closest('a[download]')) return;
+        toggleCvModal();
+    });
+
+    if (cvToggleBtn) {
+        cvToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleCvModal();
+        });
+    }
+
+    if (cvCloseBtn) {
+        cvCloseBtn.addEventListener('click', closeCvModal);
+    }
+
+    if (cvModalBackdrop) {
+        cvModalBackdrop.addEventListener('click', closeCvModal);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !cvModal.classList.contains('hidden')) {
+            closeCvModal();
+        }
+    });
+}
