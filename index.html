@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAGNAGA MAKILIGHI Clainn - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="i18n.js" defer></script>
+    <script src="script.js" defer></script>
+    <link rel="shortcut icon" href="img/icone.png" type="image/x-icon">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-xl font-bold text-gray-900 tracking-tight">Portfolio<span class="text-amber-500">.</span></a>
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#home" class="text-gray-600 hover:text-amber-600 transition" data-i18n="nav.home">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-amber-600 transition" data-i18n="nav.about">About</a>
+                    <a href="#atouts" class="text-gray-600 hover:text-amber-600 transition" data-i18n="nav.skills">Skills</a>
+                    <a href="#parcours" class="text-gray-600 hover:text-amber-600 transition" data-i18n="nav.education">Education</a>
+                    <a href="#experience" class="text-gray-600 hover:text-amber-600 transition" data-i18n="nav.experience">Experience</a>
+                    <a href="#projects" class="text-gray-600 hover:text-amber-600 transition" data-i18n="nav.projects">Projects</a>
+                    <a href="#contact" class="text-gray-600 hover:text-amber-600 transition" data-i18n="nav.contact">Contact</a>
+                    <div class="lang-switcher" role="group" aria-label="Language">
+                        <button type="button" class="lang-btn lang-btn-active" data-lang="en" aria-pressed="true">EN</button>
+                        <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 md:hidden">
+                    <div class="lang-switcher" role="group" aria-label="Language">
+                        <button type="button" class="lang-btn lang-btn-active" data-lang="en" aria-pressed="true">EN</button>
+                        <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+                    </div>
+                    <button class="text-gray-700" id="menu-button" data-i18n-aria="nav.menu" aria-label="Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Mobile -->
+    <div class="hidden md:hidden fixed w-full bg-white z-40 top-16 shadow-lg transition-all" id="mobile-menu">
+        <div class="px-4 pt-2 pb-4 space-y-2 font-medium">
+            <a href="#home" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded" data-i18n="nav.home">Home</a>
+            <a href="#about" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded" data-i18n="nav.about">About</a>
+            <a href="#atouts" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded" data-i18n="nav.skills">Skills</a>
+            <a href="#parcours" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded" data-i18n="nav.education">Education</a>
+            <a href="#experience" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded" data-i18n="nav.experience">Experience</a>
+            <a href="#projects" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded" data-i18n="nav.projects">Projects</a>
+            <a href="#contact" class="block px-3 py-2 text-gray-600 hover:text-amber-600 rounded" data-i18n="nav.contact">Contact</a>
+        </div>
+    </div>
+
+    <!-- Section Accueil -->
+    <section id="home" class="h-screen relative flex items-center justify-center">
+        <div class="absolute inset-0 z-0">
+            <img src="img/bank.jpeg" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-4 max-w-3xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn tracking-wide">MAGNAGA MAKILIGHI Clainn</h1>
+            <p class="text-lg md:text-2xl mb-8 font-light text-gray-200 animate-slideIn" data-i18n="hero.role">Full-Stack Developer, Mobile & IT Specialist</p>
+            <div class="flex justify-center gap-4">
+                <a href="#projects" class="bg-amber-500 text-white font-medium px-8 py-3 rounded-xl hover:bg-amber-600 transition shadow-lg" data-i18n="hero.cta.projects">View my projects</a>
+                <a href="#contact" class="bg-white/10 backdrop-blur-md border border-white/30 text-white font-medium px-8 py-3 rounded-xl hover:bg-white/20 transition" data-i18n="hero.cta.contact">Contact me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos & CV -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900" data-i18n="about.title">About me</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
+                <div class="w-56 h-56 relative flex-shrink-0">
+                    <div class="w-full h-full rounded-2xl overflow-hidden border-2 border-amber-500 shadow-xl">
+                        <img src="img/profil.jpeg" alt="MAGNAGA MAKILIGHI Clainn" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="max-w-xl">
+                    <p class="mb-4 text-gray-600 leading-relaxed" data-i18n="about.p1">
+                        Passionate Full-Stack and Mobile developer, I combine solid software engineering skills (Laravel, React, Flutter, Python) with hands-on expertise in IT infrastructure and maintenance.
+                    </p>
+                    <p class="mb-6 text-gray-600 leading-relaxed" data-i18n="about.p2">
+                        My goal is to design high-performing, secure and intuitive applications while ensuring system optimization and technical follow-up.
+                    </p>
+                    
+                    <!-- Carte CV -->
+                    <div id="cv-card" class="bg-white border border-gray-200 rounded-2xl p-4 flex items-center justify-between shadow-sm hover:shadow-md transition cursor-pointer group">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-red-50 text-red-500 p-3 rounded-xl group-hover:bg-red-100 transition">
+                                <i class="fa-solid fa-file-pdf text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800 text-sm">CV MAGNAGA MAKELIGHI Clainn</h4>
+                                <p class="text-xs text-gray-400" data-i18n="about.cv.hint">Click to view • Portfolio & Career</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="cv-toggle-btn" type="button" class="text-amber-600 hover:text-amber-700 text-sm font-medium px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 transition">
+                                <i class="fa-solid fa-eye mr-1"></i> <span data-i18n="about.cv.view">View</span>
+                            </button>
+                            <a href="cv.pdf" download="CV-MAGNAGA-MAKELIGHI-Clainn.pdf" class="text-gray-400 hover:text-amber-600 p-2" data-i18n-title="about.cv.download" title="Download" onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-download"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Liens sociaux -->
+                    <div class="mt-6 flex gap-4">
+                        <a href="https://www.linkedin.com/in/clainn/" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-amber-500 hover:text-white transition">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:magnagamakelighiclainn@gmail.com" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-amber-500 hover:text-white transition">
+                            <i class="fa-regular fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Section Parcours Éducatif -->
+<section id="parcours" class="py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8" data-i18n="education.title">Education</h2>
+
+            <div class="space-y-6 divide-y divide-gray-100">
+                <div class="pt-6 first:pt-0 flex items-start">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">OMNIA SCHOOL OF BUSINESS AND TECHNOLOGY</h3>
+                            <p class="text-sm text-gray-500" data-i18n="education.item1.degree">Bachelor's • Computer Science</p>
+                            <p class="text-xs text-gray-400 mt-1" data-i18n="education.item1.place">Casablanca, Morocco</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex items-start">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">OMNIA SCHOOL OF BUSINESS AND TECHNOLOGY</h3>
+                            <p class="text-sm text-gray-500" data-i18n="education.item2.degree">Professional • Computer Science</p>
+                            <p class="text-xs text-gray-400 mt-1" data-i18n="education.item2.place">Graduated January 2026 • Casablanca</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex items-start">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">HOUSSNI JOB</h3>
+                            <p class="text-sm text-gray-500" data-i18n="education.item3.degree">Professional • Computer Science</p>
+                            <p class="text-xs text-gray-400 mt-1" data-i18n="education.item3.place">Graduated January 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 flex items-start">
+                    <div class="flex space-x-4">
+                        <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <i class="fa-solid fa-school"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800" data-i18n="education.item4.school">BIKELE Technical High School</h3>
+                            <p class="text-sm text-gray-500" data-i18n="education.item4.degree">Secondary education • Education</p>
+                            <p class="text-xs text-gray-400 mt-1" data-i18n="education.item4.place">Graduated January 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Section Atouts -->
+    <section id="atouts" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900" data-i18n="skills.title">Technical Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Carte 1 : Backend & API -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                        <i class="fa-solid fa-server text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-4" data-i18n="skills.backend">Backend & API</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Laravel (PHP)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>PHP / REST API</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span data-i18n="skills.backend.db">MySQL / Database</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Git / GitHub</li>
+                    </ul>
+                </div>
+
+                <!-- Carte 2 : Frontend & Mobile -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                        <i class="fa-solid fa-mobile-screen text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-4" data-i18n="skills.frontend">Frontend & Mobile</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Flutter (Dart)</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>React JS</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>HTML5 / CSS3</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Tailwind CSS</li>
+                    </ul>
+                </div>
+
+                <!-- Carte 3 : Automatisation -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                        <i class="fa-solid fa-code text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-4" data-i18n="skills.automation">Automation</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Python</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span data-i18n="skills.automation.scripting">Scripting & Bots</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Telegram Bot API</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Google Sheets API</li>
+                    </ul>
+                </div>
+
+                <!-- Carte 4 : Infrastructure -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 mb-6">
+                        <i class="fa-solid fa-network-wired text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 text-lg mb-4" data-i18n="skills.infra">Infrastructure</h3>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span data-i18n="skills.infra.hw">Hardware corrective maintenance</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span data-i18n="skills.infra.os">OS system configuration</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span data-i18n="skills.infra.diag">Diagnostics & Troubleshooting</span></li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span data-i18n="skills.infra.support">Technical support</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Expérience Pro / Stages -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8" data-i18n="experience.title">Professional Experience</h2>
+
+                <div class="space-y-8 divide-y divide-gray-100">
+                    <!-- Stage 1 -->
+                    <div class="pt-6 first:pt-0">
+                        <div class="mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-800 uppercase text-sm tracking-wider" data-i18n="experience.role">IT Intern</h3>
+                                <p class="text-xs font-semibold text-gray-500">LE BÜCHER • <span data-i18n="experience.internship">Internship</span></p>
+                                <p class="text-xs text-gray-400 mt-0.5" data-i18n="experience.bucher.date">May 2024 - Present • Casablanca</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed" data-i18n="experience.bucher.desc">
+                            Design and development of a showcase website for the carpentry company Le Bûcher. Page structure integration and highlighting of services and projects (JavaScript, HTML/CSS).
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.bucher.tag1">Web development</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.bucher.tag2">JavaScript OS</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.bucher.tag3">HTML Emails</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.bucher.tag4">CSS Grid</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="pt-6">
+                        <div class="mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-800 uppercase text-sm tracking-wider" data-i18n="experience.role">IT Intern</h3>
+                                <p class="text-xs font-semibold text-gray-500">ENDEX HOLDING • <span data-i18n="experience.internship">Internship</span></p>
+                                <p class="text-xs text-gray-400 mt-0.5" data-i18n="experience.endex.date">May 2024 - Present • Casablanca</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed" data-i18n="experience.endex.desc">
+                            Worked on an existing Shopify e-commerce store to redesign and optimize the user interface. Applied responsive design for a smooth display on all devices.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.endex.tag1">E-commerce</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full">Shopify</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.endex.tag3">Responsive web design</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.endex.tag4">UX / Ergonomics</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="pt-6">
+                        <div class="mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-800 uppercase text-sm tracking-wider" data-i18n="experience.role">IT Intern</h3>
+                                <p class="text-xs font-semibold text-gray-500">DIGICRAFT • <span data-i18n="experience.internship">Internship</span></p>
+                                <p class="text-xs text-gray-400 mt-0.5" data-i18n="experience.digicraft.date">March 2023 - Present • Casablanca</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed" data-i18n="experience.digicraft.desc">
+                            Learning and applying JavaScript fundamentals to make web interfaces dynamic. Adopting best practices in web architecture and project follow-up.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.bucher.tag2">JavaScript OS</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.digicraft.tag2">Web development</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="pt-6">
+                        <div class="mb-2">
+                            <div>
+                                <h3 class="font-bold text-gray-800 uppercase text-sm tracking-wider" data-i18n="experience.role">IT Intern</h3>
+                                <p class="text-xs font-semibold text-gray-500" data-i18n="experience.assembly.company">National Assembly • Internship</p>
+                                <p class="text-xs text-gray-400 mt-0.5" data-i18n="experience.assembly.date">August 2022 - Present • Libreville</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-4 leading-relaxed" data-i18n="experience.assembly.desc">
+                            Performed corrective and preventive maintenance on the IT fleet (workstations, peripherals). Diagnosed hardware and software failures.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.assembly.tag1">Maintenance methods</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.assembly.tag2">Troubleshooting</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.assembly.tag3">Technical support</span>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-3 py-1 rounded-full" data-i18n="experience.assembly.tag4">Network infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Détails Maintenance Informatique -->
+            <div class="mt-8 bg-white border border-amber-200/60 rounded-3xl p-8 shadow-sm">
+                <h3 class="text-lg font-bold text-amber-600 text-center mb-6" data-i18n="maintenance.title">Details — IT Maintenance</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-amber-500"></i>
+                            <span data-i18n="maintenance.item1">Hardware problem diagnosis and resolution</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-amber-500"></i>
+                            <span data-i18n="maintenance.item2">Operating system installation and configuration</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-amber-500"></i>
+                            <span data-i18n="maintenance.item3">Preventive equipment maintenance</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-amber-500"></i>
+                            <span data-i18n="maintenance.item4">Backup and security management</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-amber-500"></i>
+                            <span data-i18n="maintenance.item5">End-user technical support</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-amber-500"></i>
+                            <span data-i18n="maintenance.item6">Software updates and maintenance</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section Projets Réalisés -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900" data-i18n="projects.title">Recent Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Projet 1 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="img/image ASPA.jpeg" alt="Mousse & Co / E-commerce" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Laravel & Livewire</span>
+                        <h3 class="text-lg font-bold mt-3 mb-2 text-gray-800">Mousse & Co / E-commerce</h3>
+                        <p class="text-sm text-gray-600 mb-4" data-i18n="projects.p1.desc">E-commerce platform with subscription management and automated workflows.</p>
+                    </div>
+                </div>
+
+                <!-- Projet 2 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="img/portfolio hhholly.PNG" alt="OMNIA-Connect" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md" data-i18n="projects.p2.tag">Full-Stack & Mobile</span>
+                        <h3 class="text-lg font-bold mt-3 mb-2 text-gray-800">OMNIA-Connect</h3>
+                        <p class="text-sm text-gray-600 mb-4" data-i18n="projects.p2.desc">Student collaborative platform with access management and exchange network.</p>
+                    </div>
+                </div>
+
+                <!-- Projet 3 -->
+                <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition">
+                    <div class="h-48 overflow-hidden bg-gray-200">
+                        <img src="img/port.PNG" alt="Vision-ShopFlow" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md">Python & Streamlit</span>
+                        <h3 class="text-lg font-bold mt-3 mb-2 text-gray-800">Vision-ShopFlow</h3>
+                        <p class="text-sm text-gray-600 mb-4" data-i18n="projects.p3.desc">Predictive sales analysis tool and store inventory automation.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900" data-i18n="contact.title">Contact Me</h2>
+            <div class="flex flex-col md:flex-row gap-8">
+                
+                <div class="flex-1 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                    <h3 class="text-xl font-bold mb-6 text-gray-800" data-i18n="contact.info">Contact details</h3>
+                    <div class="space-y-6 text-sm">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <a href="mailto:magnagamakelighiclainn@gmail.com" class="text-gray-600 hover:text-amber-600">magnagamakelighiclainn@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <a href="https://www.linkedin.com/in/clainn/" target="_blank" class="text-gray-600 hover:text-amber-600" data-i18n="contact.linkedin">LinkedIn Profile</a>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <span class="text-gray-600" data-i18n="contact.location">Casablanca, Morocco (Available remotely)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 bg-white p-8 rounded-3xl border border-gray-100 shadow-sm">
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1" for="name" data-i18n="contact.name">Full name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1" for="email" data-i18n="contact.email">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1" for="message" data-i18n="contact.message">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-amber-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-500 text-white font-medium py-3 rounded-xl hover:bg-amber-600 transition shadow-md text-sm" data-i18n="contact.send">Send message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center text-sm">
+        <div class="container mx-auto px-4">
+            <p data-i18n="footer.copy">&copy; 2026 MAGNAGA MAKILIGHI Clainn. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modale CV plein écran -->
+    <div id="cv-modal" class="cv-modal hidden" aria-hidden="true">
+        <div id="cv-modal-backdrop" class="cv-modal-backdrop"></div>
+        <div class="cv-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+            <div class="cv-modal-header">
+                <span id="cv-modal-title" class="text-sm font-medium text-gray-700">
+                    <i class="fa-solid fa-file-pdf text-red-500 mr-2"></i>CV MAGNAGA MAKELIGHI Clainn
+                </span>
+                <div class="flex items-center gap-2">
+                    <a href="cv.pdf" download="CV-MAGNAGA-MAKELIGHI-Clainn.pdf" class="cv-modal-action" data-i18n-title="about.cv.download" title="Download">
+                        <i class="fa-solid fa-download"></i>
+                    </a>
+                    <a href="cv.pdf" target="_blank" rel="noopener" class="cv-modal-action" data-i18n-title="cv.open" title="Open in a new tab">
+                        <i class="fa-solid fa-up-right-from-square"></i>
+                    </a>
+                    <button id="cv-close-btn" type="button" class="cv-modal-action" data-i18n-aria="cv.close" aria-label="Close">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="cv-pdf-container" class="cv-pdf-container">
+                <p id="cv-loading" class="cv-loading" data-i18n="cv.loading">Loading CV...</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
