@@ -118,9 +118,9 @@ const translations = {
     "projects.p5.tag": "Full-Stack & Mobile",
     "projects.p5.desc":
       "Student collaborative platform with access management and exchange network.",
-    "projects.p6.tag": "Python & Streamlit",
+    "projects.p6.tag": "HTML5 / CSS3 & JavaScript",
     "projects.p6.desc":
-      "Predictive sales analysis tool and store inventory automation.",
+      "Design and development of an interactive and responsive portfolio showcasing my profile, technical skills, and web projects.",
 
     "contact.title": "Contact Me",
     "contact.info": "Contact details",
@@ -261,9 +261,9 @@ const translations = {
     "projects.p5.tag": "Développement Full-Stack et mobile",
     "projects.p5.desc":
       "Plateforme collaborative étudiante avec gestion des accès et réseau d'échange.",
-    "projects.p6.tag": "Python et Streamlit",
+    "projects.p6.tag": "HTML5 / CSS3 & JavaScript",
     "projects.p6.desc":
-      "Outil d'analyse prédictive des ventes et d'automatisation des stocks en magasin.",
+      "Conception et développement d'un portfolio interactif et responsive mettant en valeur mon profil, mes compétences et mes réalisations de développeur web.",
 
     "contact.title": "Me Contacter",
     "contact.info": "Coordonnées",
