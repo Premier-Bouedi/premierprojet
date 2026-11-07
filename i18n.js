@@ -124,6 +124,7 @@ const translations = {
 
     "contact.title": "Contact Me",
     "contact.info": "Contact details",
+    "contact.github": "GitHub Profile",
     "contact.linkedin": "LinkedIn Profile",
     "contact.location": "Casablanca, Morocco (Available remotely)",
     "contact.name": "Full name",
@@ -266,6 +267,7 @@ const translations = {
 
     "contact.title": "Me Contacter",
     "contact.info": "Coordonnées",
+    "contact.github": "Profil GitHub",
     "contact.linkedin": "Profil LinkedIn",
     "contact.location": "Casablanca, Maroc (Disponible à distance)",
     "contact.name": "Nom complet",
