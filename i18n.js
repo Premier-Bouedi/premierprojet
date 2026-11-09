@@ -260,7 +260,7 @@ const translations = {
       "Plateforme de commerce électronique avec gestion des abonnements et flux de travail automatisés.",
     "projects.p5.tag": "Développement Full-Stack et mobile",
     "projects.p5.desc":
-      "Plateforme collaborative étudiante avec gestion des accès et réseau d'échange.",
+      "site pour presente des projects realisent  .",
     "projects.p6.tag": "HTML5 / CSS3 & JavaScript",
     "projects.p6.desc":
       "Conception et développement d'un portfolio interactif et responsive mettant en valeur mon profil, mes compétences et mes réalisations de développeur web.",
